@@ -7,15 +7,16 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rbody;
     private Vector2 _direction;
 
+    private SpawnComponent _spawnComponent;
+    private ProjectileSpawnConfig _projectileSpawnConfig;
+
+
     private void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
+        _projectileSpawnConfig = Resources.Load<ProjectileSpawnConfig>("Configs/PlayerProjectileSpawnConfig");
+        _spawnComponent = new SpawnComponent(_projectileSpawnConfig);
     }
-    public void SetDirection(Vector2 direction)
-    {
-        _direction = direction;
-    }
-
     private void FixedUpdate()
     {
         Move();
@@ -24,5 +25,13 @@ public class Player : MonoBehaviour
     {
         if (_direction != Vector2.zero)
             _rbody.MovePosition(_rbody.position + _speed * Time.fixedDeltaTime * _direction);
+    }
+    public void SetDirection(Vector2 direction)
+    {
+        _direction = direction;
+    }
+    public void Attack()
+    {
+        Debug.Log("Атака");
     }
 }

@@ -13,6 +13,8 @@ public class PlayerInputReader : MonoBehaviour
         _inputAction = new PlayerInputAction();
         _inputAction.Player.Move.performed += OnMove;
         _inputAction.Player.Move.canceled += OnMove;
+
+        _inputAction.Player.Attack.performed += OnAttack;
     }
 
     private void OnEnable()
@@ -23,5 +25,9 @@ public class PlayerInputReader : MonoBehaviour
     {   
         _movement = context.ReadValue<Vector2>();
         _player.SetDirection(_movement);
+    }
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        _player.Attack();
     }
 }

@@ -3,18 +3,20 @@ using UnityEngine;
 public class Bootstrap : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _templateSprite;
+    [SerializeField] private Transform _playerSpawnPosition;
+    [SerializeField] private Transform _enemySpawnPosition;
     private void Awake()
     {
-        var playerSpawnConfig = Resources.Load<CharacterSpawnConfig>("Configs/PlayerSpawnConfig");
+        var playerSpawnConfig = Resources.Load<SpawnConfig>("Configs/PlayerConfig");
         var playerSpawnComponent = new SpawnComponent(playerSpawnConfig);
 
-        var enemySpawnConfig = Resources.Load<CharacterSpawnConfig>("Configs/EnemySpawnConfig");
+        var enemySpawnConfig = Resources.Load<SpawnConfig>("Configs/EnemyConfig");
         var enemySpawnComponent = new SpawnComponent(enemySpawnConfig);
 
         var camera = new CameraAdjuster(_templateSprite);
         camera.AdjustCameraToBackground();
 
-        playerSpawnComponent.Spawn();
-        enemySpawnComponent.Spawn();
+        playerSpawnComponent.Spawn(_playerSpawnPosition.position);
+        enemySpawnComponent.Spawn(_enemySpawnPosition.position);
     }
 }

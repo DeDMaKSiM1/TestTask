@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class SpawnComponent
 {
-    private readonly CharacterSpawnConfig _config;
+    private readonly SpawnConfig _config;
 
     private readonly static Dictionary<string, GameObject> _prefabCache = new();
 
-    public SpawnComponent(CharacterSpawnConfig config)
+    public SpawnComponent(SpawnConfig config)
     {
         _config = config;
     }
-    public void Spawn()
+    public void Spawn(Vector3 positionSpawn)
     {
         string characterName = _config.Name;
 
@@ -25,7 +25,6 @@ public class SpawnComponent
             }
             _prefabCache[characterName] = objectToSpawn;
         }
-        var positionSpawn = _config.SpawnPosition;
 
         Object.Instantiate(objectToSpawn, positionSpawn, Quaternion.identity);
     }
