@@ -1,24 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnComponent : MonoBehaviour
+public class SpawnComponent
 {
-    [SerializeField] private CharacterData _characterToSpawn;
+    private CharacterSpawnConfig _config;
 
     private static Dictionary<string, GameObject> _prefabCache = new Dictionary<string, GameObject>();
 
-    private void Start()
+    public SpawnComponent(CharacterSpawnConfig config)
     {
-        Spawn();
+        _config = config;
     }
 
     public void Spawn()
     {
-        string characterName = _characterToSpawn.ToString();
+        string characterName = _config.Name;
 
         if (!_prefabCache.TryGetValue(characterName, out GameObject objectToSpawn))
         {
-            objectToSpawn = _characterToSpawn.prefab;
+            objectToSpawn = _config.Prefab;
             if (objectToSpawn == null)
             {
                 Debug.LogError($"Object {characterName} not found in Resources");
@@ -26,7 +26,8 @@ public class SpawnComponent : MonoBehaviour
             }
             _prefabCache[characterName] = objectToSpawn;
         }
+        var positionSpawn = _config.SpawnPosition;
 
-        Instantiate(objectToSpawn);
+        Object.Instantiate(objectToSpawn, positionSpawn, Quaternion.identity);
     }
 }
