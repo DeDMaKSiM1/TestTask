@@ -7,14 +7,19 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rbody;
     private Vector2 _direction;
 
+    private IConfigLoader _configLoader;
+    private ProjectileSpawnConfig _projectileConfig;
+
     private SpawnComponent _spawnComponent;
     private ProjectileSpawnConfig _projectileSpawnConfig;
 
 
     private void Start()
     {
+        _configLoader = new PlayerConfigLoader();
+
         _rbody = GetComponent<Rigidbody2D>();
-        _projectileSpawnConfig = Resources.Load<ProjectileSpawnConfig>("Configs/PlayerProjectileSpawnConfig");
+        _projectileSpawnConfig = Resources.Load<ProjectileSpawnConfig>("Configs/Projectiles/PlayerProjectileConfig");
         _spawnComponent = new SpawnComponent(_projectileSpawnConfig);
     }
     private void FixedUpdate()
@@ -32,6 +37,14 @@ public class Player : MonoBehaviour
     }
     public void Attack()
     {
-        Debug.Log("Атака");
+        var projectilePrefab = _spawnComponent.Spawn(transform.position);
+        if(!projectilePrefab.TryGetComponent<ProjectileInstantiater>(out var projectileInit))
+        {
+            Debug.Log("Ошибка при инстанте снаряда");
+            return;
+        }
+        Debug.Log(_direction);
+        var test = _configLoader.LoadProjectileConfig();
+        projectileInit.ProjectileInit(test, _direction);
     }
 }

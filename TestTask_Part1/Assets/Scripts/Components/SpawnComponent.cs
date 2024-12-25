@@ -11,7 +11,7 @@ public class SpawnComponent
     {
         _config = config;
     }
-    public void Spawn(Vector3 positionSpawn)
+    public GameObject Spawn(Vector3 positionSpawn)
     {
         string characterName = _config.Name;
 
@@ -21,11 +21,11 @@ public class SpawnComponent
             if (objectToSpawn == null)
             {
                 Debug.LogError($"Object {characterName} not found in Resources");
-                return;
+                return default;
             }
             _prefabCache[characterName] = objectToSpawn;
         }
 
-        Object.Instantiate(objectToSpawn, positionSpawn, Quaternion.identity);
+        return Object.Instantiate(objectToSpawn, positionSpawn, Quaternion.identity);
     }
 }

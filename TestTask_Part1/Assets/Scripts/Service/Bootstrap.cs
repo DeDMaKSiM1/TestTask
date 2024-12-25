@@ -7,10 +7,10 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private Transform _enemySpawnPosition;
     private void Awake()
     {
-        var playerSpawnConfig = Resources.Load<SpawnConfig>("Configs/PlayerConfig");
+        var playerSpawnConfig = Resources.Load<SpawnConfig>("Configs/Characters/PlayerConfig");
         var playerSpawnComponent = new SpawnComponent(playerSpawnConfig);
 
-        var enemySpawnConfig = Resources.Load<SpawnConfig>("Configs/EnemyConfig");
+        var enemySpawnConfig = Resources.Load<SpawnConfig>("Configs/Characters/EnemyConfig");
         var enemySpawnComponent = new SpawnComponent(enemySpawnConfig);
 
         var camera = new CameraAdjuster(_templateSprite);
