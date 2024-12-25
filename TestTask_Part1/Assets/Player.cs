@@ -16,7 +16,11 @@ public class Player : MonoBehaviour
         _direction = direction;
     }
 
-    private void Update()
+    private void FixedUpdate()
+    {
+        Move();
+    }
+    private void Move()
     {
         if (_direction != Vector2.zero)
             _rbody.MovePosition(_rbody.position + _speed * Time.fixedDeltaTime * _direction);
