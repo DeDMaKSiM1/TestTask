@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class SpawnComponent
 {
-    private CharacterSpawnConfig _config;
+    private readonly CharacterSpawnConfig _config;
 
-    private static Dictionary<string, GameObject> _prefabCache = new Dictionary<string, GameObject>();
+    private readonly static Dictionary<string, GameObject> _prefabCache = new();
 
     public SpawnComponent(CharacterSpawnConfig config)
     {

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraAdjuster
 {
-    private SpriteRenderer _templateSprite;
-    private Camera _mainCamera;
+    private readonly SpriteRenderer _templateSprite;
+    private readonly Camera _mainCamera;
 
     public CameraAdjuster(SpriteRenderer templateSprite)
     {

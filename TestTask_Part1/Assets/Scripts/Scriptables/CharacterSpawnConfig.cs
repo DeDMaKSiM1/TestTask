@@ -5,5 +5,5 @@ public class CharacterSpawnConfig : ScriptableObject
 {
     public string Name;
     public GameObject Prefab;
-    public Vector3 SpawnPosition;
+    public Vector2 SpawnPosition;
 }
