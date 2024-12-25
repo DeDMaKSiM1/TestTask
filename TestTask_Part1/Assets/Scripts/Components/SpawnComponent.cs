@@ -11,7 +11,6 @@ public class SpawnComponent
     {
         _config = config;
     }
-
     public void Spawn()
     {
         string characterName = _config.Name;
