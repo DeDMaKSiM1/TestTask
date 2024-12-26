@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
         _projectileSpawnConfig = Resources.Load<ProjectileSpawnConfig>("Configs/Projectiles/PlayerProjectileConfig");
         _spawnComponent = new SpawnComponent(_projectileSpawnConfig);
     }
+    private void Update()
+    {
+        RotatePlayer();
+    }
     private void FixedUpdate()
     {
         Move();
@@ -31,6 +35,13 @@ public class Player : MonoBehaviour
         if (_direction != Vector2.zero)
             _rbody.MovePosition(_rbody.position + _speed * Time.fixedDeltaTime * _direction);
     }
+    private void RotatePlayer()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 directionToMouse = mousePosition - transform.position;
+        float angle = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
+    }
     public void SetDirection(Vector2 direction)
     {
         _direction = direction;
@@ -38,7 +49,7 @@ public class Player : MonoBehaviour
     public void Attack()
     {
         var projectilePrefab = _spawnComponent.Spawn(transform.position);
-        if(!projectilePrefab.TryGetComponent<ProjectileInstantiater>(out var projectileInit))
+        if (!projectilePrefab.TryGetComponent<ProjectileInstantiater>(out var projectileInit))
         {
             Debug.Log("Ошибка при инстанте снаряда");
             return;
@@ -47,4 +58,5 @@ public class Player : MonoBehaviour
         var test = _configLoader.LoadProjectileConfig();
         projectileInit.ProjectileInit(test, _direction);
     }
+
 }
