@@ -12,9 +12,7 @@ public class Player : MonoBehaviour
     private SpawnComponent _spawnComponent;
     private ProjectileSpawnConfig _projectileSpawnConfig;
 
-    private Vector3 mousePosition;
-    private Vector3 directionToMouse;
-    private float angle;
+    private float angleToMousePosition;
 
     private void Start()
     {
@@ -36,13 +34,15 @@ public class Player : MonoBehaviour
     {
         if (_direction != Vector2.zero)
             _rbody.MovePosition(_rbody.position + _speed * Time.fixedDeltaTime * _direction);
+
+
     }
     private void RotatePlayer()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        directionToMouse = mousePosition - transform.position;
-        angle = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var directionToMouse = mousePosition - transform.position;
+        angleToMousePosition = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleToMousePosition));
     }
     public void SetDirection(Vector2 direction)
     {
@@ -50,14 +50,15 @@ public class Player : MonoBehaviour
     }
     public void Attack()
     {
-        GameObject projectilePrefab = _spawnComponent.Spawn(_projectileSpawnPosition.position);
+        var projectilePrefab = _spawnComponent.Spawn(_projectileSpawnPosition.position);
         if (!projectilePrefab.TryGetComponent<ProjectileInstantiater>(out var projectileInit))
         {
             Debug.Log("Ошибка при инстанте снаряда");
             return;
         }
-        var test = _configLoader.LoadProjectileConfig();
-        projectileInit.ProjectileInit(test, angle);
+        //Исправить
+        var test = _configLoader.LoadProjectileConfig(); 
+        projectileInit.ProjectileInit(test, angleToMousePosition );
     }
 
 }

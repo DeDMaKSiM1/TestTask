@@ -17,12 +17,12 @@ public class ProjectileInstantiater : MonoBehaviour
     {
         _heatlh = config.ProjectileHealth;
         _speed = config.ProjectileSpeed;
-        var directionToMouse = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0).normalized;
+        var directionToMouse = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)).normalized;
         rbody.AddForce(directionToMouse * _speed, ForceMode2D.Impulse);
     }
     public void ApplyDamage()
     {
-
+        Debug.Log("Урон получен");
     }
 }
 

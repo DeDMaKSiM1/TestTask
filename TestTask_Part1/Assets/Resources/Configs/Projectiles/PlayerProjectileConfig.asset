@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Projectile_Default
   Prefab: {fileID: 6416839321742869907, guid: eabc063f0495544458eef32234792043, type: 3}
   ProjectileHealth: 100
-  ProjectileSpeed: 500
+  ProjectileSpeed: 10
