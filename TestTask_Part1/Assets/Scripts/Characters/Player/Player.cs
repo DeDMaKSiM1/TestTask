@@ -5,22 +5,21 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private Transform _projectileSpawnPosition;
 
+    private float angleToMousePosition;
     private Rigidbody2D _rbody;
+    private SpawnComponent _spawnComponent;
+    private ProjectileSpawnConfig projectileSpawnConfig;
     private Vector2 _direction;
     private IConfigLoader _configLoader;
 
-    private SpawnComponent _spawnComponent;
-    private ProjectileSpawnConfig _projectileSpawnConfig;
-
-    private float angleToMousePosition;
 
     private void Start()
     {
         _configLoader = new PlayerConfigLoader();
-
         _rbody = GetComponent<Rigidbody2D>();
-        _projectileSpawnConfig = Resources.Load<ProjectileSpawnConfig>("Configs/Projectiles/PlayerProjectileConfig");
-        _spawnComponent = new SpawnComponent(_projectileSpawnConfig);
+
+          projectileSpawnConfig = _configLoader.LoadProjectileConfig();
+        _spawnComponent = new SpawnComponent(projectileSpawnConfig);
     }
     private void Update()
     {
@@ -34,8 +33,6 @@ public class Player : MonoBehaviour
     {
         if (_direction != Vector2.zero)
             _rbody.MovePosition(_rbody.position + _speed * Time.fixedDeltaTime * _direction);
-
-
     }
     private void RotatePlayer()
     {
@@ -56,9 +53,7 @@ public class Player : MonoBehaviour
             Debug.Log("Ошибка при инстанте снаряда");
             return;
         }
-        //Исправить
-        var test = _configLoader.LoadProjectileConfig(); 
-        projectileInit.ProjectileInit(test, angleToMousePosition );
+        
+        projectileInit.ProjectileInit(projectileSpawnConfig, angleToMousePosition );
     }
-
 }
