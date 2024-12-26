@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         _configLoader = new PlayerConfigLoader();
         _rbody = GetComponent<Rigidbody2D>();
 
-          projectileSpawnConfig = _configLoader.LoadProjectileConfig();
+        projectileSpawnConfig = _configLoader.LoadProjectileConfig();
         _spawnComponent = new SpawnComponent(projectileSpawnConfig);
     }
     private void Update()
@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     {
         if (_direction != Vector2.zero)
             _rbody.MovePosition(_rbody.position + _speed * Time.fixedDeltaTime * _direction);
+        else
+            _rbody.linearVelocity = Vector2.zero;
+
     }
     private void RotatePlayer()
     {
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour
             Debug.Log("Ошибка при инстанте снаряда");
             return;
         }
-        
-        projectileInit.ProjectileInit(projectileSpawnConfig, angleToMousePosition );
+
+        projectileInit.ProjectileInit(projectileSpawnConfig, angleToMousePosition);
     }
 }
