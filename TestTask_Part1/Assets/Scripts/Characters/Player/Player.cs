@@ -3,17 +3,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private Transform _projectileSpawnPosition;
 
     private Rigidbody2D _rbody;
     private Vector2 _direction;
-
     private IConfigLoader _configLoader;
-    private ProjectileSpawnConfig _projectileConfig;
 
     private SpawnComponent _spawnComponent;
     private ProjectileSpawnConfig _projectileSpawnConfig;
 
-
+    private Vector3 mousePosition;
+    private Vector3 directionToMouse;
     private void Start()
     {
         _configLoader = new PlayerConfigLoader();
@@ -37,10 +37,11 @@ public class Player : MonoBehaviour
     }
     private void RotatePlayer()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 directionToMouse = mousePosition - transform.position;
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        directionToMouse = mousePosition - transform.position;
+        directionToMouse.Normalize();
         float angle = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
     public void SetDirection(Vector2 direction)
     {
@@ -48,15 +49,14 @@ public class Player : MonoBehaviour
     }
     public void Attack()
     {
-        var projectilePrefab = _spawnComponent.Spawn(transform.position);
+        GameObject projectilePrefab = _spawnComponent.Spawn(_projectileSpawnPosition.position);
         if (!projectilePrefab.TryGetComponent<ProjectileInstantiater>(out var projectileInit))
         {
             Debug.Log("Ошибка при инстанте снаряда");
             return;
         }
-        Debug.Log(_direction);
         var test = _configLoader.LoadProjectileConfig();
-        projectileInit.ProjectileInit(test, _direction);
+        projectileInit.ProjectileInit(test, directionToMouse);
     }
 
 }

@@ -25,7 +25,7 @@ public class SpawnComponent
             }
             _prefabCache[characterName] = objectToSpawn;
         }
-
+        // Здесь может конфиг прям передавать в заспавленный объект?
         return Object.Instantiate(objectToSpawn, positionSpawn, Quaternion.identity);
     }
 }

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6450145665598230178}
   - component: {fileID: 7757158512493797291}
   - component: {fileID: 2772897281348182545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 7
+  _projectileSpawnPosition: {fileID: 4716066097632952380}
 --- !u!114 &2772897281348182545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4716066097632952380}
   - component: {fileID: 1513365168316318091}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjectileSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

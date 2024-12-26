@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6149050234370168586}
   - component: {fileID: 6859127030877784647}
   - component: {fileID: 3129689408258288300}
-  m_Layer: 0
+  - component: {fileID: 4645703499769151859}
+  m_Layer: 7
   m_Name: Projectile_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,3 +166,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f498bd3818f7241957f5191563415d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4645703499769151859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6416839321742869907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7bb564b3788a748a33863e64c865f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: Player
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3129689408258288300}
+        m_TargetAssemblyTypeName: ProjectileInstantiater, Assembly-CSharp
+        m_MethodName: ApplyDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
