@@ -1,4 +1,5 @@
 ﻿
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProjectileInstantiater : MonoBehaviour
@@ -12,15 +13,16 @@ public class ProjectileInstantiater : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
 
     }
-    public void ProjectileInit(ProjectileSpawnConfig config, Vector3 directionToMouse)
+    public void ProjectileInit(ProjectileSpawnConfig config, float angle)
     {
         _heatlh = config.ProjectileHealth;
         _speed = config.ProjectileSpeed;
-        rbody.AddForce(directionToMouse * _speed);
+        var directionToMouse = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0).normalized;
+        rbody.AddForce(directionToMouse * _speed, ForceMode2D.Impulse);
     }
     public void ApplyDamage()
     {
-        Debug.Log("Урон принят");
+
     }
 }
 

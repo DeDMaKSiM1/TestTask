@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
     private Vector3 mousePosition;
     private Vector3 directionToMouse;
+    private float angle;
+
     private void Start()
     {
         _configLoader = new PlayerConfigLoader();
@@ -39,8 +41,7 @@ public class Player : MonoBehaviour
     {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         directionToMouse = mousePosition - transform.position;
-        directionToMouse.Normalize();
-        float angle = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+        angle = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
     public void SetDirection(Vector2 direction)
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
             return;
         }
         var test = _configLoader.LoadProjectileConfig();
-        projectileInit.ProjectileInit(test, directionToMouse);
+        projectileInit.ProjectileInit(test, angle);
     }
 
 }
