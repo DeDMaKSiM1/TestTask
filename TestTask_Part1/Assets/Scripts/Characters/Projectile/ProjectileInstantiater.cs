@@ -13,7 +13,7 @@ public class ProjectileInstantiater : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
 
     }
-    public void ProjectileInit(ProjectileSpawnConfig config, float angle)
+    public void ProjectileInit(ProjectileConfig config, float angle)
     {
         _heatlh = config.ProjectileHealth;
         _speed = config.ProjectileSpeed;

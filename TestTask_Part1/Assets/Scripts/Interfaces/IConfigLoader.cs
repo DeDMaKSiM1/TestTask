@@ -3,7 +3,6 @@ using UnityEngine;
 
 public interface IConfigLoader
 {
-    public CharacterSpawnConfig LoadCharacterConfig();
-    public ProjectileSpawnConfig LoadProjectileConfig();
+    public T LoadConfig<T>(string path) where T : ScriptableObject;
 }
 

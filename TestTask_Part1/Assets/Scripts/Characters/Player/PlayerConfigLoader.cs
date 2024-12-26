@@ -1,14 +1,9 @@
 using UnityEngine;
 
-public class PlayerConfigLoader : IConfigLoader
+public class GenericConfigLoader : IConfigLoader
 {
-    public CharacterSpawnConfig LoadCharacterConfig()
+    public T LoadConfig<T>(string path) where T : ScriptableObject
     {
-        return Resources.Load<CharacterSpawnConfig>("PlayerConfig");
-    }
-
-    public ProjectileSpawnConfig LoadProjectileConfig()
-    {
-        return Resources.Load<ProjectileSpawnConfig>("PlayerProjectileConfig");
+        return Resources.Load<T>(path);
     }
 }

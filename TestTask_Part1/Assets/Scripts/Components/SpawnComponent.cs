@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnComponent
+public class SpawnComponent 
 {
     private readonly SpawnConfig _config;
 

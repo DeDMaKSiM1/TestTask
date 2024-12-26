@@ -8,18 +8,18 @@ public class Player : MonoBehaviour
     private float angleToMousePosition;
     private Rigidbody2D _rbody;
     private SpawnComponent _spawnComponent;
-    private ProjectileSpawnConfig projectileSpawnConfig;
+    private ProjectileConfig _projectileSpawnConfig;
     private Vector2 _direction;
     private IConfigLoader _configLoader;
 
-
+    private const string ProjectileConfigPath = "PlayerProjectileConfig";
     private void Start()
     {
-        _configLoader = new PlayerConfigLoader();
+        _configLoader = new GenericConfigLoader();
         _rbody = GetComponent<Rigidbody2D>();
 
-        projectileSpawnConfig = _configLoader.LoadProjectileConfig();
-        _spawnComponent = new SpawnComponent(projectileSpawnConfig);
+        _projectileSpawnConfig = _configLoader.LoadConfig<ProjectileConfig>(ProjectileConfigPath);
+        _spawnComponent = new SpawnComponent(_projectileSpawnConfig);
     }
     private void Update()
     {
@@ -57,6 +57,6 @@ public class Player : MonoBehaviour
             return;
         }
 
-        projectileInit.ProjectileInit(projectileSpawnConfig, angleToMousePosition);
+        projectileInit.ProjectileInit(_projectileSpawnConfig, angleToMousePosition);
     }
 }
