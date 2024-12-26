@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnterCollision : MonoBehaviour
+public class EnterCollisionComponent : MonoBehaviour
 {
     [SerializeField] private string _tag;
+
     public UnityEvent OnEnter;
     private void OnCollisionEnter2D(Collision2D collision)
     {
