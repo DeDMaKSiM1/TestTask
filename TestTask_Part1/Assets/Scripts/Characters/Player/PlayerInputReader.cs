@@ -20,7 +20,11 @@ public class PlayerInputReader : MonoBehaviour
     private void OnEnable()
     {
         _inputAction.Enable();
-    } 
+    }
+    private void OnDisable()
+    {
+        _inputAction.Disable();
+    }
     private void OnMove(InputAction.CallbackContext context)
     {   
         _movement = context.ReadValue<Vector2>();

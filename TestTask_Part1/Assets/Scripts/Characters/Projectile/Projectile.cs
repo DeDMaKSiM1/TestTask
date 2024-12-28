@@ -1,8 +1,9 @@
 ﻿
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ProjectileInstantiater : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     private Rigidbody2D rbody;
     private float _heatlh;
@@ -22,7 +23,9 @@ public class ProjectileInstantiater : MonoBehaviour
     }
     public void ApplyDamage()
     {
-        Debug.Log("Урон получен");
+        GameSession.Instance.GameData.PlayerPoints += 10;
+        var currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
     }
 }
 

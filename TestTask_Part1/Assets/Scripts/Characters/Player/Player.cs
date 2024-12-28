@@ -50,8 +50,8 @@ public class Player : MonoBehaviour
     }
     public void Attack()
     {
-        var projectilePrefab = _spawnComponent.Spawn(_projectileSpawnPosition.position);
-        if (!projectilePrefab.TryGetComponent<ProjectileInstantiater>(out var projectileInit))
+        var projectilePrefab = _spawnComponent.SpawnCharacter(_projectileSpawnPosition.position);
+        if (!projectilePrefab.TryGetComponent<Projectile>(out var projectileInit))
         {
             Debug.Log("Ошибка при инстанте снаряда");
             return;

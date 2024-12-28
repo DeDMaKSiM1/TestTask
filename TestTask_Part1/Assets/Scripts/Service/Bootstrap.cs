@@ -7,6 +7,8 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private Transform _enemySpawnPosition;
     private void Awake()
     {
+        CreateGameSession();
+
         var playerSpawnConfig = Resources.Load<SpawnConfig>("PlayerConfig");
         var playerSpawnComponent = new SpawnComponent(playerSpawnConfig);
 
@@ -15,8 +17,17 @@ public class Bootstrap : MonoBehaviour
 
         var camera = new CameraAdjuster(_templateSprite);
         camera.AdjustCameraToBackground();
-
-        playerSpawnComponent.Spawn(_playerSpawnPosition.position);
-        enemySpawnComponent.Spawn(_enemySpawnPosition.position);
+         
+        
+        playerSpawnComponent.SpawnCharacter(_playerSpawnPosition.position);
+        enemySpawnComponent.SpawnCharacter(_enemySpawnPosition.position);
+    }
+    private void CreateGameSession()
+    {
+        if (FindAnyObjectByType<GameSession>() != null)
+            return;
+        var gameSession = Resources.Load<GameObject>("GameSession");
+        var gameSessionSpawner = new SpawnComponent();
+        gameSessionSpawner.Spawn(gameSession);
     }
 }

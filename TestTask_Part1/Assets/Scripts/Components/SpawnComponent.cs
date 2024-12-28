@@ -11,8 +11,10 @@ public class SpawnComponent
     {
         _config = config;
     }
-    public GameObject Spawn(Vector3 positionSpawn)
+    public SpawnComponent() { } 
+    public GameObject SpawnCharacter(Vector3 positionSpawn)
     {
+        //???
         string characterName = _config.Name;
 
         if (!_prefabCache.TryGetValue(characterName, out GameObject objectToSpawn))
@@ -25,7 +27,11 @@ public class SpawnComponent
             }
             _prefabCache[characterName] = objectToSpawn;
         }
-        // Здесь может конфиг прям передавать в заспавленный объект?
+
         return Object.Instantiate(objectToSpawn, positionSpawn, Quaternion.identity);
+    }
+    public GameObject Spawn(GameObject gameObject)
+    {
+        return Object.Instantiate(gameObject);
     }
 }
