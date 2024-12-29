@@ -14,8 +14,7 @@ public class SpawnComponent
     public SpawnComponent() { } 
     public GameObject SpawnCharacter(Vector3 positionSpawn)
     {
-        //???
-        string characterName = _config.Name;
+        string characterName = _config.Prefab.name;
 
         if (!_prefabCache.TryGetValue(characterName, out GameObject objectToSpawn))
         {
