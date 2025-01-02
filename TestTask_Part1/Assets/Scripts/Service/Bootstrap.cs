@@ -10,24 +10,23 @@ public class Bootstrap : MonoBehaviour
         CreateGameSession();
 
         var playerSpawnConfig = Resources.Load<SpawnConfig>("PlayerConfig");
-        var playerSpawnComponent = new SpawnComponent(playerSpawnConfig);
-
         var enemySpawnConfig = Resources.Load<SpawnConfig>("EnemyConfig");
-        var enemySpawnComponent = new SpawnComponent(enemySpawnConfig);
+
+        var playerSpawnComponent = new SpawnComponent();
+        var enemySpawnComponent = new SpawnComponent();
 
         var camera = new CameraAdjuster(_templateSprite);
         camera.AdjustCameraToBackground();
-         
-        
-        playerSpawnComponent.SpawnCharacter(_playerSpawnPosition.position);
-        enemySpawnComponent.SpawnCharacter(_enemySpawnPosition.position);
+
+
+        playerSpawnComponent.SpawnToPosition(playerSpawnConfig.Prefab.name, _playerSpawnPosition.position);
+        enemySpawnComponent.SpawnToPosition(enemySpawnConfig.Prefab.name, _enemySpawnPosition.position);
     }
     private void CreateGameSession()
     {
         if (FindAnyObjectByType<GameSession>() != null)
             return;
-        var gameSession = Resources.Load<GameObject>("GameSession");
         var gameSessionSpawner = new SpawnComponent();
-        gameSessionSpawner.Spawn(gameSession);
+        gameSessionSpawner.Spawn("GameSession");
     }
 }

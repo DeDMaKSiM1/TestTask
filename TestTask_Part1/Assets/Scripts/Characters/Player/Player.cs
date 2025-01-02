@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         _rbody = GetComponent<Rigidbody2D>();
 
         _projectileSpawnConfig = _configLoader.LoadConfig<ProjectileConfig>(ProjectileConfigPath);
-        _spawnComponent = new SpawnComponent(_projectileSpawnConfig);
+        _spawnComponent = new SpawnComponent();
     }
     private void Update()
     {
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     }
     public void Attack()
     {
-        var projectilePrefab = _spawnComponent.SpawnCharacter(_projectileSpawnPosition.position);
+        var projectilePrefab = _spawnComponent.SpawnToPosition(_projectileSpawnConfig.Prefab.name, _projectileSpawnPosition.position);
         if (!projectilePrefab.TryGetComponent<Projectile>(out var projectileInit))
         {
             Debug.Log("Ошибка при инстанте снаряда");
