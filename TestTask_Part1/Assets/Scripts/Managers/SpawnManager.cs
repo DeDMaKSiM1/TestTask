@@ -1,4 +1,6 @@
-﻿using Configs;
+﻿using Characters;
+using Components;
+using Configs;
 using UnityEngine;
 
 namespace Managers
