@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+/*
 public class PlayerInputReader : MonoBehaviour
 {
     [SerializeField] private Player _player;
@@ -35,3 +35,4 @@ public class PlayerInputReader : MonoBehaviour
         _player.Attack();
     }
 }
+*/

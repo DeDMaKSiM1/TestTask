@@ -1,7 +1,8 @@
 using UnityEngine;
-
+/*
 public class Bootstrap : MonoBehaviour
 {
+    
     [SerializeField] private SpriteRenderer _templateSprite;
     [SerializeField] private Transform _playerSpawnPosition;
     [SerializeField] private Transform _enemySpawnPosition;
@@ -19,14 +20,16 @@ public class Bootstrap : MonoBehaviour
         camera.AdjustCameraToBackground();
 
 
-        playerSpawnComponent.SpawnToPosition(playerSpawnConfig.Prefab.name, _playerSpawnPosition.position);
-        enemySpawnComponent.SpawnToPosition(enemySpawnConfig.Prefab.name, _enemySpawnPosition.position);
+        //playerSpawnComponent.SpawnToPosition(playerSpawnConfig.Prefab.name, _playerSpawnPosition.position);
+        //enemySpawnComponent.SpawnToPosition(enemySpawnConfig.Prefab.name, _enemySpawnPosition.position);
     }
     private void CreateGameSession()
     {
         if (FindAnyObjectByType<GameSession>() != null)
             return;
         var gameSessionSpawner = new SpawnComponent();
-        gameSessionSpawner.Spawn("GameSession");
+        //gameSessionSpawner.Spawn("GameSession");
     }
+
 }
+*/

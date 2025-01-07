@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-
+/*
 public class Projectile : MonoBehaviour
 {
     private Rigidbody2D rbody;
@@ -30,3 +30,4 @@ public class Projectile : MonoBehaviour
     }
 }
 
+*/

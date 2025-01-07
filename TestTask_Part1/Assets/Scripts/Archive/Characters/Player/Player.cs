@@ -1,5 +1,5 @@
 using UnityEngine;
-
+/*
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -50,13 +50,14 @@ public class Player : MonoBehaviour
     }
     public void Attack()
     {
-        var projectilePrefab = _spawnComponent.SpawnToPosition(_projectileSpawnConfig.Prefab.name, _projectileSpawnPosition.position);
-        if (!projectilePrefab.TryGetComponent<Projectile>(out var projectileInit))
-        {
-            Debug.Log("Ошибка при инстанте снаряда");
-            return;
-        }
+        //var projectilePrefab = _spawnComponent.SpawnToPosition(_projectileSpawnConfig.Prefab.name, _projectileSpawnPosition.position);
+        //if (!projectilePrefab.TryGetComponent<Projectile>(out var projectileInit))
+        //{
+        //    Debug.Log("Ошибка при инстанте снаряда");
+        //    return;
+        //}
 
-        projectileInit.ProjectileInit(_projectileSpawnConfig, angleToMousePosition);
+        //projectileInit.ProjectileInit(_projectileSpawnConfig, angleToMousePosition);
     }
 }
+*/

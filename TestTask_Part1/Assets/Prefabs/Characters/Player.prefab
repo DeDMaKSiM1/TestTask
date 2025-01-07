@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 6233449272360885247}
   - component: {fileID: 5956102385172567299}
   - component: {fileID: 6450145665598230178}
-  - component: {fileID: 7757158512493797291}
-  - component: {fileID: 2772897281348182545}
   m_Layer: 0
   m_Name: Player
   m_TagString: Character
@@ -155,33 +153,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7757158512493797291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409974950138668974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25f45eb594fa094f959662436599d90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 7
-  _projectileSpawnPosition: {fileID: 5500448858031122639}
---- !u!114 &2772897281348182545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409974950138668974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3826dbbf7c7214da285c78782cb4fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 7757158512493797291}
 --- !u!1 &2046430047564341806
 GameObject:
   m_ObjectHideFlags: 0

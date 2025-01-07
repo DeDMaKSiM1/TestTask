@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4527fbd3a50f414297d987d0d44ec59, type: 3}
-  m_Name: PlayerProjectileConfig
+  m_Script: {fileID: 11500000, guid: 447a35156494e3141bcfe1341ac7c1c2, type: 3}
+  m_Name: GameRules
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 6416839321742869907, guid: eabc063f0495544458eef32234792043, type: 3}
-  Name: Projectile_Default
-  ProjectileHealth: 10
-  ProjectileSpeed: 10
+  PlayerConfig: {fileID: 11400000, guid: 7282699445a03f94d9ca73c630c37903, type: 2}
+  EnemyConfig: {fileID: 11400000, guid: f8e68f63dae2755428d8b72813cc340a, type: 2}

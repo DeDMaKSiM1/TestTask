@@ -1,8 +1,8 @@
 ﻿
 using UnityEngine;
 
-public abstract class SpawnConfig : ScriptableObject
-{
-    public GameObject Prefab;
-}
+//public abstract class SpawnConfig : ScriptableObject
+//{
+//    public GameObject Prefab;
+//}
 

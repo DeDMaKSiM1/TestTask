@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09156b12878fd7945a176178b504a52b, type: 3}
-  m_Name: EnemyConfig
+  m_Script: {fileID: 11500000, guid: 768263deeb5e16640b6d7f50e54d81e1, type: 3}
+  m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  Name: Enemy
-  Prefab: {fileID: 1814855866696779461, guid: 28812351524759b48bd3755c38bba614, type: 3}
+  Prefab: {fileID: 409974950138668974, guid: bfcb9779a60bc5846802e7c33adfd6ce, type: 3}
