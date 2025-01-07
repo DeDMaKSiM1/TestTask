@@ -8,11 +8,20 @@ namespace Managers
         [SerializeField] private Transform _playerPosition;
         [SerializeField] private Transform _enemyPosition;
 
-        public void Initialization(GameRulesConfig congif)
+        public void CharacterSpawn(GameRulesConfig config)
         {
             SpawnComponent spawnComponent = new();
-            spawnComponent.SpawnToPosition(congif.PlayerConfig.Prefab, _playerPosition.position, Quaternion.identity);
-            spawnComponent.SpawnToPosition(congif.EnemyConfig.Prefab, _enemyPosition.position, Quaternion.identity);
+            var playerPrefab = spawnComponent.SpawnToPosition(config.PlayerConfig.Prefab, _playerPosition.position, Quaternion.identity);
+            var enemyPrefab = spawnComponent.SpawnToPosition(config.EnemyConfig.Prefab, _enemyPosition.position, Quaternion.identity);
+
+            SendConfig(playerPrefab, config.PlayerConfig);
+            SendConfig(enemyPrefab, config.EnemyConfig);
+        }
+
+        private void SendConfig(GameObject characterPrefab, CharacterConfig charConfig)
+        {
+            var character = characterPrefab.GetComponent<Character>();
+            character.GetConfigData(charConfig);
         }
     }
 }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1814855866696779461, guid: 28812351524759b48bd3755c38bba614, type: 3}
+  Speed: 8

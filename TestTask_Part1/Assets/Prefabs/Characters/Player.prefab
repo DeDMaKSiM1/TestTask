@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6233449272360885247}
   - component: {fileID: 5956102385172567299}
   - component: {fileID: 6450145665598230178}
+  - component: {fileID: 4042581642261102327}
+  - component: {fileID: 5301753193323885805}
   m_Layer: 0
   m_Name: Player
   m_TagString: Character
@@ -153,6 +155,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4042581642261102327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409974950138668974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b3a6c73fdc7df4cb2597b29cc38812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileSpawnPosition: {fileID: 5500448858031122639}
+--- !u!114 &5301753193323885805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409974950138668974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3826dbbf7c7214da285c78782cb4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 4042581642261102327}
 --- !u!1 &2046430047564341806
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +192,7 @@ GameObject:
   - component: {fileID: 4716066097632952380}
   - component: {fileID: 1513365168316318091}
   m_Layer: 0
-  m_Name: GunPoint
+  m_Name: GunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

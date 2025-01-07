@@ -3,8 +3,9 @@
 namespace Configs
 {
     [CreateAssetMenu(fileName = "NewCharacter", menuName = "Configs/Character")]
-    public class CharacterConfigs : ScriptableObject
+    public class CharacterConfig : ScriptableObject
     {
         public GameObject Prefab;
+        public float Speed;
     }
 }
