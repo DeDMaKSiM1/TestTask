@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1814855866696779461, guid: 28812351524759b48bd3755c38bba614, type: 3}
   Speed: 8
+  WeaponConfig: {fileID: 11400000, guid: 45cb3f56f04d04144b60a64f0369bd95, type: 2}

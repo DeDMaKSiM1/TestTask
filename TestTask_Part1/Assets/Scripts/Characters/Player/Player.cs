@@ -1,5 +1,4 @@
-using Configs;
-using System;
+using Components;
 using UnityEngine;
 
 namespace Characters
@@ -9,7 +8,7 @@ namespace Characters
         private float _angleToMousePosition;
         private Vector2 _direction;
 
-
+ 
         private void Update()
         {
             RotatePlayer();
@@ -40,8 +39,5 @@ namespace Characters
         {
             _direction = direction;
         }
-
-
     }
-
 }

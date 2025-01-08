@@ -7,12 +7,13 @@ namespace Characters
     public abstract class Character : MonoBehaviour
     {
         [SerializeField] protected Transform _projectileSpawnPosition;
-                
+
         protected float _speed;
         protected Rigidbody2D _rb;
 
-        protected AttackComponent weapon;
+        protected Weapon _weapon;
 
+        protected CharacterConfig _config;
         public float Speed
         {
             get => _speed;
@@ -30,17 +31,17 @@ namespace Characters
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            weapon = new AttackComponent();
+            _weapon = new Weapon(_config.WeaponConfig);
         }
 
         public void GetConfigData(CharacterConfig config)
         {
+            _config = config;
             Speed = config.Speed;
         }
         public void Attack()
-        {
-            //МБ надо сделать ивентами?) хз
-            weapon.DoAttack();
+        { 
+            _weapon.DoAttack(_projectileSpawnPosition.position);
         }
     }
 }

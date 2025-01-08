@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 768263deeb5e16640b6d7f50e54d81e1, type: 3}
-  m_Name: PlayerConfig
+  m_Script: {fileID: 11500000, guid: e92aeb8fccea2664cbad91e98d3e6a2e, type: 3}
+  m_Name: PlayerWeapon
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 409974950138668974, guid: bfcb9779a60bc5846802e7c33adfd6ce, type: 3}
-  Speed: 8
-  WeaponConfig: {fileID: 11400000, guid: b85fe413a4a989e4ca84938cc509b529, type: 2}
+  Prefab: {fileID: 6416839321742869907, guid: eabc063f0495544458eef32234792043, type: 3}
+  Speed: 10
