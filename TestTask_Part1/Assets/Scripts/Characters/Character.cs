@@ -33,10 +33,9 @@ namespace Characters
 
 
 
-        private void Start()
+        protected virtual void Start()
         {
-            _rb = GetComponent<Rigidbody2D>();
-            _weapon = new Weapon();
+            _rb = GetComponent<Rigidbody2D>(); 
         }
 
 

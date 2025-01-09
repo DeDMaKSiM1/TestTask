@@ -12,7 +12,7 @@ public class Installer : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<SpawnComponent>().AsTransient();
-        Container.Bind<PlayerConfig>().AsSingle();
+        Container.Bind<PlayerConfig>().FromScriptableObject(playerConfig).AsSingle();
         //Container.Bind<WeaponConfig>().FromScriptableObject(weaponConfig);
 
     }

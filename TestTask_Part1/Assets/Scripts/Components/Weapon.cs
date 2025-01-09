@@ -6,8 +6,7 @@ using Zenject;
 namespace Components
 {
     public class Weapon
-    {
-        private SpawnManager _spawnManager;
+    { 
         private WeaponConfig _config;
 
 
@@ -15,7 +14,6 @@ namespace Components
         private void Construct(WeaponConfig config, SpawnManager spawnManager)
         {
             _config = config;
-            _spawnManager = spawnManager;
         }
         public void DoAttack(Vector2 spawnPosition)
         {

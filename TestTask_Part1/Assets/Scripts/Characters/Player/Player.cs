@@ -16,9 +16,15 @@ namespace Characters
         private void Construct(SpawnComponent spawnComponent, PlayerConfig config)
         {
             _spawnComponent = spawnComponent;
-            _config = config;
+            _config = config; 
         }
 
+        protected override void Start()
+        {
+            base.Start();
+            Speed = _config.Speed;
+            _weapon = _config.WeaponConfig;
+        }
         private void Update()
         {
             RotatePlayer();
@@ -26,7 +32,7 @@ namespace Characters
 
         private void FixedUpdate()
         {
-            Move();
+            Move();  
         }
 
         private void Move()
@@ -47,11 +53,11 @@ namespace Characters
         }
         public void SetDirection(Vector2 direction)
         {
-            _direction = direction;
+            _direction = direction; 
         }
         public void Attack()
         {
-            //_weapon.DoAttack(_projectileSpawnPosition.position);
+            _weapon.DoAttack(_projectileSpawnPosition.position);
             _spawnComponent.SpawnToPosition(_config.WeaponConfig.Prefab);
         }
     }
