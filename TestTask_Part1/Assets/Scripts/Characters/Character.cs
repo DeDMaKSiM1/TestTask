@@ -1,10 +1,11 @@
 using Components;
 using Configs;
+using Interfaces;
 using UnityEngine;
 
 namespace Characters
 {
-    public abstract class Character : MonoBehaviour
+    public abstract class Character : MonoBehaviour, IInitable
     {
         [SerializeField] protected Transform _projectileSpawnPosition;
 
@@ -31,18 +32,21 @@ namespace Characters
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _weapon = new Weapon(_config.WeaponConfig);
         }
 
-        public void GetConfigData(CharacterConfig config)
+        public void Inject(GameObjectConfig config)
         {
-            _config = config;
+            _config = (CharacterConfig)config;
+            _weapon = _config.WeaponConfig.Weapon;
+            Debug.Log(_config.WeaponConfig.Weapon);
+            
             Speed = config.Speed;
         }
         public void Attack()
-        { 
+        {
             _weapon.DoAttack(_projectileSpawnPosition.position);
         }
+ 
     }
 }
 

@@ -3,7 +3,7 @@
 namespace Configs
 {
     [CreateAssetMenu(fileName = "NewCharacter", menuName = "Configs/Character")]
-    public class CharacterConfig : GameConfig
+    public class CharacterConfig : GameObjectConfig
     {
         public WeaponConfig WeaponConfig;
     }

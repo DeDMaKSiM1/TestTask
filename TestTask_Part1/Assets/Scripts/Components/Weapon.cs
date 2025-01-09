@@ -1,22 +1,23 @@
 ﻿using Configs;
-using Unity.VisualScripting.FullSerializer;
+using Interfaces;
 using UnityEngine;
 
 namespace Components
 {
-    public class Weapon
-    {
-        //чисто спавн снаряда
-        private SpawnComponent _spawnComponent; 
-        private WeaponConfig _config;
-        public Weapon(WeaponConfig config)
+    public abstract class Weapon : MonoBehaviour, IInitable
+    { 
+        private  SpawnComponent _spawnComponent; 
+        private  WeaponConfig _config;
+  
+        public void DoAttack(Vector2 spawnPosition)
+        {
+            _spawnComponent.SpawnToPosition(_config.Prefab, spawnPosition, Quaternion.identity);
+        }
+
+        public void Inject(GameObjectConfig config)
         {
             _spawnComponent = new();
-            _config = config;
-        }
-        public void DoAttack(Vector2 position)
-        {
-            _spawnComponent.SpawnToPosition(_config.Prefab, position, Quaternion.identity);
+            _config = (WeaponConfig)config; 
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace  Configs
 {
-    public abstract class GameConfig : ScriptableObject
+    public abstract class GameObjectConfig : ScriptableObject
     {
         public GameObject Prefab;
         public float Speed;
