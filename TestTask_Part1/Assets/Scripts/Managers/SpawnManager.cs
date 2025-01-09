@@ -1,17 +1,26 @@
 ﻿using Characters;
 using Components;
 using Configs;
+using System.ComponentModel;
 using UnityEngine;
+using Zenject;
 
 namespace Managers
 {
     public class SpawnManager : MonoBehaviour
     {
-        public GameObject CharacterSpawn(CharacterConfig config, Vector2 spawnPosition)
+        private SpawnComponent _spawnComponent;
+
+        [Inject]
+        private void Construct(SpawnComponent spawnComponent)
         {
-            SpawnComponent spawnComponent = new();
-            var spawnGameObject = spawnComponent.SpawnToPosition(config.Prefab, spawnPosition, Quaternion.identity);
-            return spawnGameObject;
+            _spawnComponent = spawnComponent;
         }
+
+        public GameObject CharacterSpawn(GameObject prefab, Vector2 position)
+        {
+            return _spawnComponent.SpawnToPosition(prefab);
+        }
+
     }
 }

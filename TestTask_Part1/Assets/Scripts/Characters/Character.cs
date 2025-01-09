@@ -1,20 +1,22 @@
 using Components;
 using Configs;
 using Interfaces;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using Zenject;
 
 namespace Characters
 {
-    public abstract class Character : MonoBehaviour, IInitable
+    public abstract class Character : MonoBehaviour
     {
         [SerializeField] protected Transform _projectileSpawnPosition;
-
         protected float _speed;
         protected Rigidbody2D _rb;
 
         protected Weapon _weapon;
 
-        protected CharacterConfig _config;
+
+        protected SpawnComponent _spawnComponent;
         public float Speed
         {
             get => _speed;
@@ -29,24 +31,17 @@ namespace Characters
             }
         }
 
+
+
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _weapon = new Weapon();
         }
 
-        public void Inject(GameObjectConfig config)
-        {
-            _config = (CharacterConfig)config;
-            _weapon = _config.WeaponConfig.Weapon;
-            Debug.Log(_config.WeaponConfig.Weapon);
-            
-            Speed = config.Speed;
-        }
-        public void Attack()
-        {
-            _weapon.DoAttack(_projectileSpawnPosition.position);
-        }
- 
+
+
+
     }
 }
 

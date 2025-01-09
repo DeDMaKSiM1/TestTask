@@ -1,5 +1,8 @@
 using Components;
+using Configs;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using Zenject;
 
 namespace Characters
 {
@@ -7,8 +10,15 @@ namespace Characters
     {
         private float _angleToMousePosition;
         private Vector2 _direction;
+        private PlayerConfig _config;
 
- 
+        [Inject]
+        private void Construct(SpawnComponent spawnComponent, PlayerConfig config)
+        {
+            _spawnComponent = spawnComponent;
+            _config = config;
+        }
+
         private void Update()
         {
             RotatePlayer();
@@ -38,6 +48,11 @@ namespace Characters
         public void SetDirection(Vector2 direction)
         {
             _direction = direction;
+        }
+        public void Attack()
+        {
+            //_weapon.DoAttack(_projectileSpawnPosition.position);
+            _spawnComponent.SpawnToPosition(_config.WeaponConfig.Prefab);
         }
     }
 }

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 768263deeb5e16640b6d7f50e54d81e1, type: 3}
+  m_Script: {fileID: 11500000, guid: c3d1d7708a4dab14eb88c60abf53580d, type: 3}
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1814855866696779461, guid: 28812351524759b48bd3755c38bba614, type: 3}
-  Speed: 8
-  WeaponConfig: {fileID: 11400000, guid: 45cb3f56f04d04144b60a64f0369bd95, type: 2}
+  Speed: 7
+  WeaponConfig: {fileID: 11400000, guid: b85fe413a4a989e4ca84938cc509b529, type: 2}

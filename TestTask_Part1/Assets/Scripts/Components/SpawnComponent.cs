@@ -1,18 +1,23 @@
+﻿using Interfaces;
 using UnityEngine;
+using Zenject;
 
 namespace Components
 {
-    public class SpawnComponent
+    public class SpawnComponent 
     {
-        public GameObject SpawnToPosition(GameObject gameobject, Vector2 position, Quaternion quaternion)
-        {
-            return Object.Instantiate(gameobject, position, quaternion);
-        }
+        [Inject]
+        private DiContainer _diContainer;
 
-        public GameObject Spawn(GameObject gameobject)
+        //[Inject]
+        //private void Construct(DiContainer diContainer)
+        //{
+        //    _diContainer = diContainer;
+        //}
+
+        public GameObject SpawnToPosition(GameObject gameObject)
         {
-            return Object.Instantiate(gameobject);
+            return _diContainer.InstantiatePrefab(gameObject);
         }
     }
 }
-

@@ -1,23 +1,25 @@
 ﻿using Configs;
-using Interfaces;
+using Managers;
 using UnityEngine;
+using Zenject;
 
 namespace Components
 {
-    public abstract class Weapon : MonoBehaviour, IInitable
-    { 
-        private  SpawnComponent _spawnComponent; 
-        private  WeaponConfig _config;
-  
+    public class Weapon
+    {
+        private SpawnManager _spawnManager;
+        private WeaponConfig _config;
+
+
+        [Inject]
+        private void Construct(WeaponConfig config, SpawnManager spawnManager)
+        {
+            _config = config;
+            _spawnManager = spawnManager;
+        }
         public void DoAttack(Vector2 spawnPosition)
         {
-            _spawnComponent.SpawnToPosition(_config.Prefab, spawnPosition, Quaternion.identity);
-        }
-
-        public void Inject(GameObjectConfig config)
-        {
-            _spawnComponent = new();
-            _config = (WeaponConfig)config; 
+            //_spawnManager.SpawnToPosition(_config.Prefab);
         }
     }
 }
