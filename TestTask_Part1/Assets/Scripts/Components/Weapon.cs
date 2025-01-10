@@ -17,9 +17,8 @@ namespace Components
         }
         public void DoAttack(WeaponConfig config, Vector2 spawnPosition, float angle)
         {
-            var projectile = _spawnComponent.SpawnToPosition(config.Prefab, spawnPosition);
-            var projectileA = projectile.GetComponent<Projectile>();
-            projectileA.Launch(config, angle);
+            var projectile = _spawnComponent.SpawnToPosition(config.Prefab, spawnPosition).GetComponent<Projectile>();
+            projectile.Launch(config, angle);
         }
 
 
