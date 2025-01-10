@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerConfig: {fileID: 11400000, guid: 7282699445a03f94d9ca73c630c37903, type: 2}
-  weaponConfig: {fileID: 0}
+  weaponConfig: {fileID: 11400000, guid: b85fe413a4a989e4ca84938cc509b529, type: 2}
 --- !u!4 &755171304
 Transform:
   m_ObjectHideFlags: 0

@@ -4,20 +4,17 @@ using Zenject;
 
 namespace Components
 {
-    public class SpawnComponent 
+    public class SpawnComponent
     {
         [Inject]
         private DiContainer _diContainer;
 
-        //[Inject]
-        //private void Construct(DiContainer diContainer)
-        //{
-        //    _diContainer = diContainer;
-        //}
 
-        public GameObject SpawnToPosition(GameObject gameObject)
+
+        public GameObject SpawnToPosition(GameObject gameObject, Vector3 position)
         {
-            return _diContainer.InstantiatePrefab(gameObject);
+            var parameters = new GameObjectCreationParameters { Position = position };
+            return _diContainer.InstantiatePrefab(gameObject , parameters);
         }
     }
 }

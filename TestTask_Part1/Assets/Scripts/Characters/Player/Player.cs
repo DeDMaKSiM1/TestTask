@@ -1,5 +1,6 @@
 using Components;
 using Configs;
+using Interfaces;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Zenject;
@@ -13,17 +14,19 @@ namespace Characters
         private PlayerConfig _config;
 
         [Inject]
-        private void Construct(SpawnComponent spawnComponent, PlayerConfig config)
+        private void Construct(SpawnComponent spawnComponent, PlayerConfig config, IDamageDealable weapon)
         {
             _spawnComponent = spawnComponent;
-            _config = config; 
+            _config = config;
+            _weapon = weapon;
         }
 
         protected override void Start()
         {
             base.Start();
             Speed = _config.Speed;
-            _weapon = _config.WeaponConfig;
+
+            Debug.Log(_config.Prefab.name);
         }
         private void Update()
         {
@@ -32,7 +35,7 @@ namespace Characters
 
         private void FixedUpdate()
         {
-            Move();  
+            Move();
         }
 
         private void Move()
@@ -53,12 +56,11 @@ namespace Characters
         }
         public void SetDirection(Vector2 direction)
         {
-            _direction = direction; 
+            _direction = direction;
         }
         public void Attack()
         {
-            _weapon.DoAttack(_projectileSpawnPosition.position);
-            _spawnComponent.SpawnToPosition(_config.WeaponConfig.Prefab);
+            _weapon.DoAttack(_config.WeaponConfig, _projectileSpawnPosition.position, _angleToMousePosition);
         }
     }
 }

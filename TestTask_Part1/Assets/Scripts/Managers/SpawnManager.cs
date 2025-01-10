@@ -19,7 +19,7 @@ namespace Managers
 
         public GameObject CharacterSpawn(GameObject prefab, Vector2 position)
         {
-            return _spawnComponent.SpawnToPosition(prefab);
+            return _spawnComponent.SpawnToPosition(prefab, position);
         }
 
     }

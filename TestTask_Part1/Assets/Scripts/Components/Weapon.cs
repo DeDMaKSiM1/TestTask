@@ -1,23 +1,27 @@
 ﻿using Configs;
+using Interfaces;
 using Managers;
 using UnityEngine;
 using Zenject;
 
 namespace Components
 {
-    public class Weapon
-    { 
-        private WeaponConfig _config;
-
+    public class Weapon : IDamageDealable
+    {
+        private SpawnComponent _spawnComponent;
 
         [Inject]
-        private void Construct(WeaponConfig config, SpawnManager spawnManager)
+        private void Construct(SpawnComponent spawnComponent)
         {
-            _config = config;
+            _spawnComponent = spawnComponent;
         }
-        public void DoAttack(Vector2 spawnPosition)
+        public void DoAttack(WeaponConfig config, Vector2 spawnPosition, float angle)
         {
-            //_spawnManager.SpawnToPosition(_config.Prefab);
+            var projectile = _spawnComponent.SpawnToPosition(config.Prefab, spawnPosition);
+            var projectileA = projectile.GetComponent<Projectile>();
+            projectileA.Launch(config, angle);
         }
+
+
     }
 }

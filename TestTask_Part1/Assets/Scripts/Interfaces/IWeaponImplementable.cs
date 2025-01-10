@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Configs;
+using UnityEngine;
 
 namespace Interfaces
 {
-    //public interface IWeaponImplementable
-    //{
-    //    public void DoAttack(Vector2 spawnPosition);
-    //}
+    public interface IDamageDealable
+    {
+        public void DoAttack(WeaponConfig config, Vector2 spawnPosition, float angle);
+    }
 }

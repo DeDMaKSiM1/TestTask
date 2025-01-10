@@ -13,7 +13,7 @@ namespace Characters
         protected float _speed;
         protected Rigidbody2D _rb;
 
-        protected Weapon _weapon;
+        protected IDamageDealable _weapon;
 
 
         protected SpawnComponent _spawnComponent;
@@ -32,14 +32,10 @@ namespace Characters
         }
 
 
-
         protected virtual void Start()
         {
-            _rb = GetComponent<Rigidbody2D>(); 
+            _rb = GetComponent<Rigidbody2D>();
         }
-
-
-
 
     }
 }
