@@ -17,7 +17,9 @@ public class Projectile : MonoBehaviour
     //В другой класс
     public void ApplyDamage()
     {
+        //Класс изменения данных
         GameSession.Instance.GameData.PlayerPoints += 10;
+        //SceneManager
         var currentScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentScene);
     }
