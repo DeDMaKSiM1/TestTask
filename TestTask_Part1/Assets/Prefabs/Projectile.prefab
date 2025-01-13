@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6649168414776092328}
   - component: {fileID: 755045399999559253}
   - component: {fileID: 5879527710108779912}
-  - component: {fileID: 1567376053062218250}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -173,7 +172,7 @@ MonoBehaviour:
   OnEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1567376053062218250}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Scripts.SceneRebootingComponent, Assembly-CSharp
         m_MethodName: Reboot
         m_Mode: 1
@@ -247,17 +246,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd9879bce60e2dd41954171e1d8ca082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1567376053062218250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6416839321742869907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d89505b0fe2264a97de0d62325e78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
